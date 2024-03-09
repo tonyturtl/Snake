@@ -11,10 +11,10 @@ public class NewBehaviourScript : MonoBehaviour
     //direction variables
     
     private Vector2 direction;
-//bool goingUp;
-//bool goingDown;
-//bool goingLeft;
-//bool goingRight;
+bool goingUp;
+bool goingDown;
+bool goingLeft;
+bool goingRight;
 
     List<Transform> segments;
      public Transform bodyPrefab;
@@ -29,21 +29,37 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) && goingDown != true)
         {
             direction = Vector2.up;
+            goingUp=true;
+            goingDown=false;
+            goingLeft=false;
+            goingRight=false;
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) && goingRight != true)
         {
             direction = Vector2.left;
+            goingLeft=true;
+            goingRight=false;
+            goingUp=false;
+            goingDown=false;
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) && goingUp != true)
         {
             direction = Vector2.down; 
+            goingDown=true;
+            goingLeft=false;
+            goingRight=false;
+            goingUp=false;
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) && goingLeft != true)
         {
             direction = Vector2.right; 
+            goingRight=true;
+            goingLeft=false;
+            goingUp=false;
+            goingDown=false;
         }
     }   
        
